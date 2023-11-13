@@ -2,7 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from './pages/Home.vue'
-import Ingine from './pages/Ingine.vue'
+import ShareInfo from './pages/ShareInfo.vue'
 
 const router = new createRouter({
     history: createWebHistory(),
@@ -11,10 +11,9 @@ const router = new createRouter({
             path: '/',
             component: Home
         },
-        { path: '/ingine',
-            component: Ingine
+        { path: '/share',
+            component: ShareInfo
         }
-        // { path: '/contact', component: Contact }
     ]
 })
 

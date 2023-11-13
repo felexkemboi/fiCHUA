@@ -6,10 +6,8 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>E-Crime Reporting App</title>
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
-        {{--        <script src="{{ mix('css/app.scss') }}"></script>--}}
     </head>
-    <body id="app">
+    <body id="app" class="">
         <router-view></router-view>
         <script src="{{ mix('js/app.js') }}"></script>
     </body>
