@@ -11,7 +11,7 @@
                     <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-white">{{ item.name }}</a>
                 </div>
                 <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" class="text-sm font-semibold leading-6 text-white">Log in</a>
+                    <a href="#" class="text-sm font-semibold leading-6 text-white" @click="clearCache">Log in</a>
                 </div>
             </nav>
         </header>
@@ -85,12 +85,18 @@
 </template>
 
 <script setup>
+
 import { defineComponent, h } from 'vue'
 
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
+import {mainStore} from "../store";
+const store = mainStore()
+const clearCache = () => {
+    store.clearCache()
+}
 const navigation = {
     social: [
         {

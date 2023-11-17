@@ -1,6 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CrimeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+
+Route::post('/crime', [CrimeController::class, 'addCrime']);
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    Artisan::call('optimize:clear');
+    Artisan::call('storage:link');
+    echo "Config cleared<br>";
+
 });
+
+
+Route::get('/symlink', function () {
+    Artisan::call('storage:link');
+    echo "Linked<br>";
+});
+
+
+
