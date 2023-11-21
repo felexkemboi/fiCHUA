@@ -3,7 +3,7 @@
     "scripts": {
         "dev": "mix",
         "watch": "mix watch --hot",
-        "prod": "mix --production"
+        "build": "mix --production"
     },
     "devDependencies": {
         "autoprefixer": "10.4.5",

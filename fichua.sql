@@ -25,16 +25,16 @@ DROP TABLE IF EXISTS `crimes`;
 CREATE TABLE `crimes` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `type_id` bigint unsigned NOT NULL,
-  `reporter_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `reporter_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `county_id` bigint unsigned NOT NULL,
-  `town` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `building` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `suspect_no` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `evidence_link` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `videos` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `audios` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `images` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `documents` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `town` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `building` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `suspect_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `evidence_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `videos` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `audios` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `images` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `documents` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -47,7 +47,7 @@ CREATE TABLE `crimes` (
 
 LOCK TABLES `crimes` WRITE;
 /*!40000 ALTER TABLE `crimes` DISABLE KEYS */;
-INSERT INTO `crimes` VALUES (1,2,'Felex Kemboi',0,'Kenya','kejrtgv','dfdfdfdfdf','facebook.com','$request->town','$request->building','$request->evidence_link','$request->suspect_no','2023-11-14 10:08:05','2023-11-14 10:08:05'),(2,2,'Felex Kemboi',0,'reerer','dfdfdf','dfdfdf','dfdfd','$request->town','$request->building','$request->evidence_link','$request->suspect_no','2023-11-14 10:10:02','2023-11-14 10:10:02'),(3,2,'Felex Kemboi',0,'klklkl','klklkl','lklklk','klklk','1699971656jCVfH84yPQAjycxG.mp4,1699971656OE_A4nH5nddDYo-Q.mp4','$request->building','$request->evidence_link','$request->suspect_no','2023-11-14 11:20:56','2023-11-14 11:20:56'),(4,2,'Felex Kemboi',0,'klklkl','klklkl','lklklk','klklk','1699991094jCVfH84yPQAjycxG.mp4,1699991094OE_A4nH5nddDYo-Q.mp4','','1699991094F-0qbdIXgAAqZxf.jpeg,16999910941.jpg','1699991094project description (1).txt','2023-11-14 16:44:54','2023-11-14 16:44:54'),(5,3,'Felex Kemboi',0,'Nairobi','dfdf','xcddfdfd','sdsdsds','1699991185jCVfH84yPQAjycxG.mp4','','1699991185F-0qbdIXgAAqZxf.jpeg','1699991185project description (1).txt','2023-11-14 16:46:25','2023-11-14 16:46:25');
+INSERT INTO `crimes` VALUES (1,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:46','2023-11-17 13:18:46'),(2,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(3,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(4,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(5,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49');
 /*!40000 ALTER TABLE `crimes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -101,7 +101,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_11_14_120838_create_crimes_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_11_14_120839_create_crimes_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-15  8:34:36
+-- Dump completed on 2023-11-17 19:20:21

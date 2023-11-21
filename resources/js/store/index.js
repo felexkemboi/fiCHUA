@@ -57,6 +57,8 @@ export const mainStore = defineStore({
 
         async clearCache(){  await axios.get(`/api/cache-clear`);},
 
+        async symlink(){  await axios.get(`/api/symlink`);},
+
         async updateUser(id, formData) {
             try {
 
@@ -82,8 +84,6 @@ export const mainStore = defineStore({
                 console.error(error);
             }
         },
-
-
 
         async updatePassword(id,values){
             await axiosInstance.patch(`/users/${id}`, values).then((response) => {
@@ -227,3 +227,4 @@ export const mainStore = defineStore({
     },
     persist: true
 });
+

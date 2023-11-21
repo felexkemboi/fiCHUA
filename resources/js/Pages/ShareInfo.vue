@@ -1,15 +1,16 @@
 
 <template>
-    <div class="divide-gray-900/10  flex row justify-center m-16">
-        <form @submit.prevent="submitForm" class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 w-8/12 justify-center ">
+    <div class="divide-gray-900/10  flex row justify-center mt-10 ">
+<!--        w-[100vw] lg:w-8/12 sm:w-full-->
+        <form @submit.prevent="submitForm" class="bg-gray-100 ring-1 rounded-lg ring-gray-900/5 justify-center w-full lg:w-8/12 sm:w-full">
                 <div class="px-4 py-6 sm:p-12">
 
                     <h4 class="text-center mb-6 text-gray-700 text-3xl">Fill the form below</h4>
 
-                    <div class=" grid  gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <div class="grid  gap-x-6 gap-y-8 sm:grid-cols-12 sm:w-full">
 
                         <!--name-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Name(optional)</label>
                             <div class="mt-2">
                                 <input v-model="crime.reporter_name" name="name" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -17,7 +18,7 @@
                         </div>
 
                         <!--crime type-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Crime Type</label>
                             <div class="mt-2">
                                 <select v-model="crime.type" name="crime_type" autocomplete="crime_type" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -31,7 +32,7 @@
                         </div>
 
                         <!--geo-location-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Geo-location</label>
                             <div class="mt-2">
                                 <input v-model="crime.geo_location" name="location" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -39,7 +40,7 @@
                         </div>
 
                         <!--county-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">County</label>
                             <div class="mt-2">
                                 <select v-model="crime.county" name="county" autocomplete="county" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -52,7 +53,7 @@
                         </div>
 
                         <!--town-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Town</label>
                             <div class="mt-2">
                                 <input v-model="crime.town" name="location" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -60,7 +61,7 @@
                         </div>
 
                         <!--apartment name-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Building/Apartment Name</label>
                             <div class="mt-2">
                                 <input v-model="crime.building" name="location" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -68,7 +69,7 @@
                         </div>
 
                         <!--number-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Number of Suspect</label>
                             <div class="mt-2">
                                 <input v-model="crime.suspect_no" name="location" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
@@ -76,7 +77,7 @@
                         </div>
 
                         <!--images-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <p class="mb-2">Images</p>
 
                             <div class="row" v-if="images.length > 0">
@@ -93,7 +94,7 @@
                         </div>
 
                         <!--videos-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <p class="mb-2">Videos</p>
 
                             <div class="row" v-if="videos.length > 0">
@@ -111,7 +112,7 @@
                         </div>
 
                         <!--audio-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <p class="mb-2">Audio</p>
 
                             <div class="row mb-2" v-if="audios.length > 0">
@@ -129,7 +130,7 @@
                         </div>
 
                         <!--document-->
-                        <div class="sm:col-span-4">
+                        <div class="sm:col-span-full">
                             <p class="mb-2">Document</p>
                             <div class="col m-2" v-if="documents.length > 0">
                                 <p v-for="document in documents" >{{ document.name }}</p>
@@ -144,7 +145,7 @@
                         </div>
 
                         <!--link to evidence-->
-                        <div class="sm:col-span-8">
+                        <div class="sm:col-span-full">
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Link to evidence</label>
                             <div class="mt-2">
                                 <input v-model="crime.evidence_link" name="link" type="text" autocomplete="text" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />

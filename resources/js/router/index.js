@@ -1,5 +1,5 @@
 
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHashHistory } from 'vue-router'
 
 import Home from '../pages/Home.vue'
 import ShareInfo from '../pages/ShareInfo.vue'
@@ -7,7 +7,7 @@ import Admin from '../pages/Admin.vue'
 
 
 const router = new createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes: [
         {
             path: '/',

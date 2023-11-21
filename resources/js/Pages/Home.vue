@@ -1,18 +1,21 @@
 <template>
     <div class="bg-white">
         <header class="absolute inset-x-0 top-0 z-50">
-            <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div class="flex lg:flex-1">
-                    <a href="#" class="-m-1.5 p-1.5">
-                        <p class="text-teal-50">fiCHUA</p>
-                    </a>
-                </div>
-                <div class="hidden lg:flex lg:gap-x-12">
-                    <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-white">{{ item.name }}</a>
-                </div>
-                <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a href="#" class="text-sm font-semibold leading-6 text-white" @click="clearCache">Log in</a>
-                </div>
+            <nav class="flex justify-between p-6 lg:px-8" aria-label="Global">
+<!--                <div class="flex lg:fle">-->
+<!--                    <a href="#" class="-m-1.5 p-1.5">-->
+<!--                        <p class="text-teal-50">fiCHUA</p>-->
+                <img src="/storage/images/logo.png" alt="" class=" h-10 w-25 justify-start" />
+                <a href="#" class="justify-end text-sm font-semibold leading-6 text-white" @click="clearCache">Log in</a>
+
+<!--                    </a>-->
+<!--                </div>-->
+<!--                <div class="hidden lg:flex lg:gap-x-12">-->
+<!--                    <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-white">{{ item.name }}</a>-->
+<!--                </div>-->
+<!--                <div class="hidden lg:flex lg:flex-1 lg:justify-end">-->
+<!--                    <a href="#" class="text-sm font-semibold leading-6 text-white" @click="clearCache">Log in</a>-->
+<!--                </div>-->
             </nav>
         </header>
 
@@ -78,7 +81,7 @@
                         <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
                     </a>
                 </div>
-                <p class="mt-10 text-center text-xs leading-5 text-gray-500">&copy; {{ new Date().getFullYear() }} fiCHUA, Inc. All rights reserved.</p>
+                <p class="mt-10 text-center text-xs leading-5 text-gray-500" @click="store.symlink">&copy; {{ new Date().getFullYear() }} fiCHUA, Inc. All rights reserved.</p>
             </div>
         </footer>
     </div>

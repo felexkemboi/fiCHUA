@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('crimes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('type_id');
-            $table->string('reporter_name');
+            $table->string('reporter_name')->nullable();
             $table->foreignId('county_id');
-            $table->string('town');
-            $table->string('building');
-            $table->string('suspect_no');
-            $table->string('evidence_link');
-            $table->string('videos');
-            $table->string('audios');
-            $table->string('images');
-            $table->string('documents');
+            $table->string('town')->nullable();
+            $table->string('building')->nullable();
+            $table->string('suspect_no')->nullable();
+            $table->string('evidence_link')->nullable();
+            $table->string('videos')->nullable();
+            $table->string('audios')->nullable();
+            $table->string('images')->nullable();
+            $table->string('documents')->nullable();
             $table->timestamps();
         });
     }

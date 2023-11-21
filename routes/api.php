@@ -30,11 +30,7 @@ Route::get('/clear-cache', function () {
 
 });
 
-
 Route::get('/symlink', function () {
     Artisan::call('storage:link');
     echo "Linked<br>";
 });
-
-
-
