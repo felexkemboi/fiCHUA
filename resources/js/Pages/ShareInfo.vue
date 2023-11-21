@@ -235,6 +235,7 @@ const counties = ref([
 const imagePath = (file) => {
     return   URL.createObjectURL(file);
 }
+
 const images = ref([])
 
 const addImage =  (event) => {
@@ -311,6 +312,7 @@ const addDocument =  (event) => {
 }
 
 const formData = new FormData();
+
 import { mainStore } from '../store'
 
 const store = mainStore()

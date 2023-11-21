@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property mixed $suspect_no
  * @property mixed $town
  * @method static create(array $array)
+ * @method static orderBy(string $string)
+ * @method static latest()
  */
 class Crime extends Model
 {

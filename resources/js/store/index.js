@@ -1,8 +1,9 @@
 import router from '../router';
 import { defineStore } from 'pinia';
-import axiosInstance from '../axios';
-import axios from "axios";
 
+import axiosInstance from '../axios';
+
+import axios from "axios";
 
 export const mainStore = defineStore({
     id: 'main',
@@ -11,7 +12,8 @@ export const mainStore = defineStore({
         isUserAuthenticated: false,
         roles: [],
         users: [],
-        groups: []
+        groups: [],
+        crimes: []
     }),
     getters: {
         getLoggedInUser: (state) => state.loggedInUser,
@@ -19,6 +21,7 @@ export const mainStore = defineStore({
         allUsers: (state) => state.users,
         allRoles: (state) => state.roles,
         allGroups: (state) => state.groups,
+        allCrimes: (state) => state.crimes,
 
     },
     actions: {
@@ -37,7 +40,6 @@ export const mainStore = defineStore({
         },
 
         async addCrime(formData) {
-
             try {
 
                 const response = await axios.post(`/api/crime`, formData, {
@@ -52,6 +54,18 @@ export const mainStore = defineStore({
 
             }
             catch (error) {
+            }
+        },
+
+        async getAllCrimes() {
+            try {
+                axios.get(`api/crimes`).then(response => {
+                    // console.log(response.data)
+                    this.crimes = response.data
+                })
+            } catch (error) {
+
+                this.roles = [];
             }
         },
 
@@ -95,16 +109,7 @@ export const mainStore = defineStore({
             });
         },
 
-        async getAllRoles() {
-            try {
-                axiosInstance.get(`/roles`).then(response => {
-                    this.roles = response.data.roles
-                })
-            } catch (error) {
 
-                this.roles = [];
-            }
-        },
 
         async getAllUsers() {
             // console.log(axios)

@@ -80,8 +80,7 @@ class CrimeController extends Controller
             $documentNames = $documentNames .','. $documentName;
 
         }
-
-
+        
         Crime::create([
             'type_id' => (int)$request->type,
             'reporter_name' => $request->reporter_name,
@@ -101,9 +100,9 @@ class CrimeController extends Controller
 
     }
 
-    public function getCrimes(Request $request): Collection
+    public function getCrimes(): Collection
     {
-        return Crime::all();
+        return Crime::latest()->get();
     }
 
 }

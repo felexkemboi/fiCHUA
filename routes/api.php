@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/crime', [CrimeController::class, 'addCrime']);
 
+Route::get('/crimes', [CrimeController::class, 'getCrimes']);
+
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');
