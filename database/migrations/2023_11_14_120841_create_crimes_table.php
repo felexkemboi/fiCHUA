@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('audios')->nullable();
             $table->string('images')->nullable();
             $table->string('documents')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

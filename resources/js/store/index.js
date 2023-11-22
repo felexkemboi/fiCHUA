@@ -43,15 +43,12 @@ export const mainStore = defineStore({
         async addCrime(formData) {
             try {
 
-                const response = await axios.post(`/api/crime`, formData, {
+                return  await axios.post(`/api/crime`, formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
                 });
 
-                console.log(response)
-
-                 // await router.push('/')
 
             }
             catch (error) {

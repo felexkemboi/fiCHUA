@@ -19,7 +19,7 @@ class Crime extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['type_id','reporter_name','county_id','town','building','suspect_no','evidence_link', 'videos', 'audios', 'images', 'documents'];
+    protected $fillable = ['type_id','reporter_name','county_id','town','building','suspect_no','evidence_link', 'videos', 'audios', 'images', 'documents', 'description'];
 
     public mixed $building;
 

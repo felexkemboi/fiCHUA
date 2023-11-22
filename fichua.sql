@@ -16,6 +16,56 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `counties`
+--
+
+DROP TABLE IF EXISTS `counties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `counties` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `counties`
+--
+
+LOCK TABLES `counties` WRITE;
+/*!40000 ALTER TABLE `counties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `counties` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `crime_types`
+--
+
+DROP TABLE IF EXISTS `crime_types`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `crime_types` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `crime_types`
+--
+
+LOCK TABLES `crime_types` WRITE;
+/*!40000 ALTER TABLE `crime_types` DISABLE KEYS */;
+/*!40000 ALTER TABLE `crime_types` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `crimes`
 --
 
@@ -35,10 +85,11 @@ CREATE TABLE `crimes` (
   `audios` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `images` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `documents` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -47,7 +98,7 @@ CREATE TABLE `crimes` (
 
 LOCK TABLES `crimes` WRITE;
 /*!40000 ALTER TABLE `crimes` DISABLE KEYS */;
-INSERT INTO `crimes` VALUES (1,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:46','2023-11-17 13:18:46'),(2,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(3,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(4,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49'),(5,2,'Felex Kemboi',0,'dfdf',NULL,NULL,NULL,'','','','','2023-11-17 13:18:49','2023-11-17 13:18:49');
+INSERT INTO `crimes` VALUES (1,1,NULL,0,NULL,NULL,NULL,NULL,'','','','',NULL,'2023-11-22 08:41:22','2023-11-22 08:41:22'),(2,1,NULL,0,NULL,NULL,NULL,'https://tailwindui.com/components/application-ui/navigation/tabs','17006533471wpNFdAPdfBG7lDk.mp4,1700653347OKzekN1OFLZtwKlw.mp4,1700653347nouFDh_tMvgU0C-m.mp4','','1700653347F_eHflAXsAINa2Q.jpeg,1700653347bible.jpeg,1700653347tired.jpeg','',NULL,'2023-11-22 08:42:27','2023-11-22 08:42:27'),(3,2,'Thief',3,'Kenya','Suite Park','Kipkor','https://tailwindui.com/components/application-ui/navigation/tabs','1700658138mT5ERKB8H88gBJ3z.mp4,1700658138nouFDh_tMvgU0C-m.mp4,17006581381wpNFdAPdfBG7lDk.mp4,1700658138OKzekN1OFLZtwKlw.mp4','1700658138audio1.mp3,1700658138audio2.mp3,1700658138audio3.mp3','1700658138F_eHflAXsAINa2Q.jpeg,1700658138F_Oq3mhW0AAX5ko.jpeg,1700658138F_Wn0W_W8AAUp0o.jpeg,1700658138tired.jpeg,1700658138default.jpeg','1700658138Receipt_RK84QS3C64.pdf','This is all about the residence of Kasarani, we need to clean up this area please','2023-11-22 10:02:18','2023-11-22 10:02:18');
 /*!40000 ALTER TABLE `crimes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +143,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +152,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_11_14_120839_create_crimes_table',1);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_reset_tokens_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2019_12_14_000001_create_personal_access_tokens_table',1),(5,'2023_11_14_120841_create_crimes_table',1),(6,'2023_11_21_184820_create_counties_table',1),(7,'2023_11_21_184827_create_crime_types_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,4 +252,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-11-17 19:20:21
+-- Dump completed on 2023-11-22 16:56:13

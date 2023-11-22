@@ -92,7 +92,8 @@ class CrimeController extends Controller
             'videos' => substr($videoNames, 1),
             'audios' => substr($audioNames, 1),
             'documents'  => substr($documentNames, 1),
-            'images' => substr($imageNames, 1)
+            'images' => substr($imageNames, 1),
+            'description' => $request->description
         ]);
     }
 

@@ -35,17 +35,17 @@
                                                 </li>
                                             </ul>
                                         </li>
-<!--                                        <li>-->
-<!--                                            <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>-->
-<!--                                            <ul role="list" class="-mx-2 mt-2 space-y-1">-->
-<!--                                                <li v-for="team in teams" :key="team.name">-->
-<!--                                                    <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">-->
-<!--                                                        <span :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>-->
-<!--                                                        <span class="truncate">{{ team.name }}</span>-->
-<!--                                                    </a>-->
-<!--                                                </li>-->
-<!--                                            </ul>-->
-<!--                                        </li>-->
+                                        <!--                                        <li>-->
+                                        <!--                                            <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>-->
+                                        <!--                                            <ul role="list" class="-mx-2 mt-2 space-y-1">-->
+                                        <!--                                                <li v-for="team in teams" :key="team.name">-->
+                                        <!--                                                    <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">-->
+                                        <!--                                                        <span :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>-->
+                                        <!--                                                        <span class="truncate">{{ team.name }}</span>-->
+                                        <!--                                                    </a>-->
+                                        <!--                                                </li>-->
+                                        <!--                                            </ul>-->
+                                        <!--                                        </li>-->
                                         <li class="mt-auto">
                                             <a href="#" class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
                                                 <Cog6ToothIcon class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
@@ -66,7 +66,7 @@
                 <div class="flex h-16 shrink-0 items-center">
                     <img src="/storage/images/logo.png" alt="" class=" h-10 w-25 justify-start" />
 
-<!--                    <router-link class="bg-purple-400 text-white hover:bg-blue-200 font-bold p-2 rounded"  :to="{ name: 'crime-details'}" tag="button">View Details</router-link>-->
+                    <!--                    <router-link class="bg-purple-400 text-white hover:bg-blue-200 font-bold p-2 rounded"  :to="{ name: 'crime-details'}" tag="button">View Details</router-link>-->
 
                 </div>
                 <nav class="flex flex-1 flex-col">
@@ -119,16 +119,18 @@
                             </div>
                             <ul role="list" class="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
                                 <li v-for="crime in store.allCrimes" :key="crime.id" class="overflow-hidden rounded-xl border border-gray-200">
-                                    <div v-if='crime.images !== ""' v-for='src in crime.images.split(",")' class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6 overflow-x-scroll">
-                                        <img :src="getUrl(src, 'image')" class="h-20 w-20 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" alt=""/>
-                                    </div>
-                                    <div v-else-if='crime.videos !== ""'>
-                                        <video controls v-for='src in crime.videos.split(",")'  class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100  dark:bg-gray-600 m-2">
-                                            <source :src="getUrl(src, 'video')"  type="video/mp4">
-                                        </video>
-                                    </div>
-                                    <div class="text-center p-4">
-                                        No Media provided
+                                    <div>
+                                        <div v-if='crime.images !== ""' class="flex overflow-x-scroll pt-4 pb-2">
+                                            <img v-for='src in crime.images.split(",")' :src="getUrl(src, 'image')" class="pr-4 h-20 w-20 rounded-lg m-2 " alt=""/>
+                                        </div>
+                                        <div v-else-if='crime.videos !== ""' class="flex overflow-x-scroll pt-4 pb-2 pr-2">
+                                            <video controls v-for='src in crime.videos.split(",")'  class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden m-2">
+                                                <source :src="getUrl(src, 'video')"  type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <div v-else class="text-center p-4">
+                                            No Media provided
+                                        </div>
                                     </div>
                                     <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
                                         <div class="flex justify-between gap-x-4 py-3">
@@ -259,4 +261,3 @@ const navigation = [
 const sidebarOpen = ref(false)
 
 </script>
-
