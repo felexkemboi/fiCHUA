@@ -65,7 +65,9 @@
             <div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6 pb-4">
                 <div class="flex h-16 shrink-0 items-center">
                     <img src="/storage/images/logo.png" alt="" class=" h-10 w-25 justify-start" />
-<!--                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />-->
+
+<!--                    <router-link class="bg-purple-400 text-white hover:bg-blue-200 font-bold p-2 rounded"  :to="{ name: 'crime-details'}" tag="button">View Details</router-link>-->
+
                 </div>
                 <nav class="flex flex-1 flex-col">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -79,21 +81,10 @@
                                 </li>
                             </ul>
                         </li>
-<!--                        <li>-->
-<!--                            <div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>-->
-<!--                            <ul role="list" class="-mx-2 mt-2 space-y-1">-->
-<!--                                <li v-for="team in teams" :key="team.name">-->
-<!--                                    <a :href="team.href" :class="[team.current ? 'bg-gray-50 text-indigo-600' : 'text-gray-700 hover:text-indigo-600 hover:bg-gray-50', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">-->
-<!--                                        <span :class="[team.current ? 'text-indigo-600 border-indigo-600' : 'text-gray-400 border-gray-200 group-hover:border-indigo-600 group-hover:text-indigo-600', 'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border text-[0.625rem] font-medium bg-white']">{{ team.initial }}</span>-->
-<!--                                        <span class="truncate">{{ team.name }}</span>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </li>-->
                         <li class="mt-auto">
                             <a href="#" class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-indigo-600">
                                 <Cog6ToothIcon class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-indigo-600" aria-hidden="true" />
-                                Log Out
+                                <router-link to="/admin" tag="button">Log out</router-link>
                             </a>
                         </li>
                     </ul>
@@ -128,8 +119,16 @@
                             </div>
                             <ul role="list" class="mt-6 grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
                                 <li v-for="crime in store.allCrimes" :key="crime.id" class="overflow-hidden rounded-xl border border-gray-200">
-                                    <div class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6">
-                                        <img src="/storage/images/1.jpg" alt="" class="h-20 w-20 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" />
+                                    <div v-if='crime.images !== ""' v-for='src in crime.images.split(",")' class="flex items-center gap-x-4 border-b border-gray-900/5 bg-gray-50 p-6 overflow-x-scroll">
+                                        <img :src="getUrl(src, 'image')" class="h-20 w-20 flex-none rounded-lg bg-white object-cover ring-1 ring-gray-900/10" alt=""/>
+                                    </div>
+                                    <div v-else-if='crime.videos !== ""'>
+                                        <video controls v-for='src in crime.videos.split(",")'  class="relative inline-flex items-center justify-center w-20 h-20 overflow-hidden bg-gray-100  dark:bg-gray-600 m-2">
+                                            <source :src="getUrl(src, 'video')"  type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <div class="text-center p-4">
+                                        No Media provided
                                     </div>
                                     <dl class="-my-3 divide-y divide-gray-100 px-6 py-4 text-sm leading-6">
                                         <div class="flex justify-between gap-x-4 py-3">
@@ -150,7 +149,14 @@
                                         <div class="flex justify-between gap-x-4 py-3">
                                             <dt>County:</dt>
                                             <dd>
-                                                {{ crime.county_id }}
+                                                {{ crime.county }}
+                                            </dd>
+                                        </div>
+
+                                        <div class="flex justify-between gap-x-4 py-3">
+                                            <dt>Crime Type:</dt>
+                                            <dd>
+                                                {{ crime.type }}
                                             </dd>
                                         </div>
 
@@ -168,22 +174,9 @@
                                             </dd>
                                         </div>
 
-
-                                        <div class="flex justify-between gap-x-4 py-3">
-                                            <dt>Evidence Link</dt>
-                                            <dd>
-                                                {{ crime.evidence_link }}
-                                            </dd>
+                                        <div class="container py-2 px-2 mx-0 min-w-full flex flex-col items-center">
+                                            <router-link class="bg-purple-400 text-white hover:bg-blue-200 font-bold p-2 rounded"  :to="{ name: 'crime-details', params: { id: crime.id }}" tag="button">View Details</router-link>
                                         </div>
-
-                                        <div class="flex justify-between gap-x-4 py-3">
-                                            <dt>Evidence Link</dt>
-                                            <dd>
-                                                {{ crime.evidence_link }}
-                                            </dd>
-                                        </div>
-
-
                                     </dl>
                                 </li>
                             </ul>
@@ -197,22 +190,34 @@
 
 <script setup>
 
-import { onMounted, ref} from 'vue'
+import {computed, onMounted, ref} from 'vue'
 
 const crimes = ref([])
 
-import { mainStore } from '../store'
+const getUrl = (src, type)  =>{
+    return `/storage/${type}s/${src}`
+}
+
 import moment from 'moment'
+
+
+import { mainStore } from '../store'
 const store = mainStore()
 
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { Dialog, DialogPanel } from '@headlessui/vue'
 import { TransitionChild, TransitionRoot } from '@headlessui/vue'
-import {CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon } from '@heroicons/vue/24/outline'
+import {CalendarIcon, Cog6ToothIcon, FolderIcon, HomeIcon, UsersIcon } from '@heroicons/vue/24/outline'
 
 const images = ref(["https://picsum.photos/id/238/1024/800", "https://picsum.photos/id/239/1024/800", "https://picsum.photos/id/238/1024/800", "https://picsum.photos/id/239/1024/800" ])
 
 const active = ref(0);
+
+import { useRouter } from 'vue-router'
+
+
+const router = useRouter()
+
 
 const test = () => {
     let i = 0;
@@ -244,12 +249,12 @@ const navigation = [
     { name: 'Crime Types', href: '#', icon: FolderIcon, current: false },
     { name: 'Users', href: '#', icon: CalendarIcon, current: false },
 ]
-
-const teams = [
-    { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
-    { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
-    { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
-]
+//
+// const teams = [
+//     { id: 1, name: 'Heroicons', href: '#', initial: 'H', current: false },
+//     { id: 2, name: 'Tailwind Labs', href: '#', initial: 'T', current: false },
+//     { id: 3, name: 'Workcation', href: '#', initial: 'W', current: false },
+// ]
 
 const sidebarOpen = ref(false)
 

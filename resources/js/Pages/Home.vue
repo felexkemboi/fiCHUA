@@ -6,9 +6,10 @@
 <!--                    <a href="#" class="-m-1.5 p-1.5">-->
 <!--                        <p class="text-teal-50">fiCHUA</p>-->
                 <img src="/storage/images/logo.png" alt="" class=" h-10 w-25 justify-start" />
-                <a href="#" class="justify-end text-sm font-semibold leading-6 text-white" @click="clearCache">Log in</a>
+                <router-link class="justify-end text-sm font-semibold leading-6 text-white" to="/admin" tag="button">Login</router-link>
 
-<!--                    </a>-->
+
+                <!--                    </a>-->
 <!--                </div>-->
 <!--                <div class="hidden lg:flex lg:gap-x-12">-->
 <!--                    <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-white">{{ item.name }}</a>-->
@@ -91,15 +92,27 @@
 
 import { defineComponent, h } from 'vue'
 
+
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
 import {mainStore} from "../store";
+
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+
 const store = mainStore()
-const clearCache = () => {
-    store.clearCache()
+
+const adminPage = () => {
+    router.push('/admin')
 }
+
+
+
 const navigation = {
     social: [
         {

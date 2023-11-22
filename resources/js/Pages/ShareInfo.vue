@@ -22,8 +22,8 @@
                             <label  class="block text-sm font-medium leading-6 text-gray-900">Crime Type</label>
                             <div class="mt-2">
                                 <select v-model="crime.type" name="crime_type" autocomplete="crime_type" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                                    <option v-for="type in crimeTypes" :key="type.id" :value="type.id">
-                                        {{ type.name }}
+                                    <option v-for="crime_type in crime_types" :key="crime_type.id" :value="crime_type.id">
+                                        {{ crime_type.name }}
                                     </option>
 
                                 </select>
@@ -48,7 +48,6 @@
                                         {{ county.name }}
                                     </option>
                                 </select>
-
                             </div>
                         </div>
 
@@ -186,7 +185,7 @@ const crime = ref({
     evidence_link: ''
 })
 
-const crimeTypes = ref([
+const crime_types = ref([
     {
         'id': 1,
         'name': 'Sexual Assault'
@@ -315,6 +314,11 @@ const formData = new FormData();
 
 import { mainStore } from '../store'
 
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 const store = mainStore()
 
 const submitForm = async () => {
@@ -350,6 +354,8 @@ const submitForm = async () => {
     try {
 
         await store.addCrime(formData)
+
+        await router.push({ name: 'home'})
 
     } catch (error) {}
 

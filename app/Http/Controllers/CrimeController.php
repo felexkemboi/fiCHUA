@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CrimeController extends Controller
 {
-    public function addCrime(Request $request): Collection
+    public function addCrime(Request $request)
     {
 
         $allProperties = $request->all();
@@ -80,11 +80,11 @@ class CrimeController extends Controller
             $documentNames = $documentNames .','. $documentName;
 
         }
-        
-        Crime::create([
+
+        return  Crime::create([
             'type_id' => (int)$request->type,
             'reporter_name' => $request->reporter_name,
-            'county_id' => (int)$request->county_id,
+            'county_id' => (int)$request->county,
             'town' => $request->town,
             'building' => $request->building,
             'suspect_no'  => $request->suspect_no,
@@ -94,10 +94,6 @@ class CrimeController extends Controller
             'documents'  => substr($documentNames, 1),
             'images' => substr($imageNames, 1)
         ]);
-
-
-        return Crime::all();
-
     }
 
     public function getCrimes(): Collection
@@ -105,4 +101,8 @@ class CrimeController extends Controller
         return Crime::latest()->get();
     }
 
+    public function getCrime(Crime $crime): Crime
+    {
+        return $crime;
+    }
 }

@@ -22,6 +22,9 @@ Route::post('/crime', [CrimeController::class, 'addCrime']);
 
 Route::get('/crimes', [CrimeController::class, 'getCrimes']);
 
+Route::get('/crimes/{crime}', [CrimeController::class, 'getCrime']);
+
+
 Route::get('/clear-cache', function () {
     Artisan::call('cache:clear');
     Artisan::call('view:clear');

@@ -13,7 +13,8 @@ export const mainStore = defineStore({
         roles: [],
         users: [],
         groups: [],
-        crimes: []
+        crimes: [],
+        crime: null
     }),
     getters: {
         getLoggedInUser: (state) => state.loggedInUser,
@@ -22,7 +23,7 @@ export const mainStore = defineStore({
         allRoles: (state) => state.roles,
         allGroups: (state) => state.groups,
         allCrimes: (state) => state.crimes,
-
+        crime: (state) => state.crime
     },
     actions: {
         async login(values){
@@ -59,14 +60,10 @@ export const mainStore = defineStore({
 
         async getAllCrimes() {
             try {
-                axios.get(`api/crimes`).then(response => {
-                    // console.log(response.data)
+                await axios.get(`api/crimes`).then(response => {
                     this.crimes = response.data
                 })
-            } catch (error) {
-
-                this.roles = [];
-            }
+            } catch (error) {}
         },
 
         async clearCache(){  await axios.get(`/api/cache-clear`);},
@@ -109,8 +106,6 @@ export const mainStore = defineStore({
             });
         },
 
-
-
         async getAllUsers() {
             // console.log(axios)
             try {
@@ -146,7 +141,6 @@ export const mainStore = defineStore({
 
             } catch (error) {}
         },
-
 
         async logout() {
 
